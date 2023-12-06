@@ -2,7 +2,7 @@ import 'package:flutter/Cupertino.dart';
 import 'package:flutter/scheduler.dart';
 
 double _itemExtent = 60.0;
-double _offAxisFraction = 0.4;
+double _offAxisFraction = 0.3;
 TextStyle _textStyle = const TextStyle();
 double _squeeze = 1.25;
 const _useMagnifier = true;
