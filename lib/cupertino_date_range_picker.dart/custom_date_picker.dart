@@ -8,6 +8,12 @@ double _squeeze = 1.25;
 const _useMagnifier = true;
 const _magnification = 2.35 / 2.1;
 
+String Function(int day) _getDatePickerDay = (int day) => '$day日';
+
+String Function(int month) _getDatePickerMonth = (int month) => '$month月';
+
+String Function(int year) _getDatePickerYear = (int year) => '$year年';
+
 class CustomDatePickerController extends ChangeNotifier {
   final DateTime initialDateTime;
   final DateTime? minimumDate;
@@ -100,6 +106,9 @@ class CustomDatePicker extends StatefulWidget {
   final double? offAxisFraction;
   final double? squeeze;
   final TextStyle? itemTextStyle;
+  final String Function(int day)? setDayDisplayText;
+  final String Function(int month)? setMonthDisplayText;
+  final String Function(int year)? setYearDisplayText;
 
   CustomDatePicker({
     Key? key,
@@ -109,6 +118,9 @@ class CustomDatePicker extends StatefulWidget {
     this.offAxisFraction,
     this.squeeze,
     this.itemTextStyle,
+    this.setDayDisplayText,
+    this.setMonthDisplayText,
+    this.setYearDisplayText,
   }) : super(key: key) {
     if (itemExtent != null) {
       _itemExtent = itemExtent!;
@@ -121,6 +133,15 @@ class CustomDatePicker extends StatefulWidget {
     }
     if (squeeze != null) {
       _squeeze = squeeze!;
+    }
+    if (setDayDisplayText != null) {
+      _getDatePickerDay = setDayDisplayText!;
+    }
+    if (setMonthDisplayText != null) {
+      _getDatePickerMonth = setMonthDisplayText!;
+    }
+    if (setYearDisplayText != null) {
+      _getDatePickerYear = setYearDisplayText!;
     }
   }
 
@@ -241,12 +262,6 @@ class _CustomDatePickerState extends State<CustomDatePicker> {
       widget.onDateTimeChange(selectedDateTime);
     }
   }
-
-  String _getDatePickerDay(int day) => '$day日';
-
-  String _getDatePickerMonth(int month) => '$month月';
-
-  String _getDatePickerYear(int year) => '$year年';
 
   Widget _buildDayPicker() {
     final int daysInCurrentMonth =
