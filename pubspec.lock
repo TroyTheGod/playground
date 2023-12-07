@@ -44,12 +44,11 @@ packages:
   cupertino_date_picker_w_controller:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: eaafae8a49aedb80658466a17f40593f0c9d0fec
-      url: "https://github.com/TroyTheGod/cupertino_date_picker_w_controller.git"
-    source: git
-    version: "0.0.1"
+      name: cupertino_date_picker_w_controller
+      sha256: "2fef1c31f54cb47fb46cd131708b41507ee37527d0d84666e3c6ddf77d669b23"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   cupertino_icons:
     dependency: "direct main"
     description:
