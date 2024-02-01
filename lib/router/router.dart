@@ -17,7 +17,10 @@ final router = GoRouter(
         ),
         GoRoute(
           path: 'eatWhatHo',
-          builder: (context, state) => const EatWhatHo(),
+          builder: (context, state) => EatWhatHo(
+            spinnerType:
+                int.tryParse(state.uri.queryParameters['spinnerType'] ?? ''),
+          ),
         ),
         GoRoute(
           path: 'datePicker',

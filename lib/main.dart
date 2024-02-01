@@ -1,10 +1,9 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:playground/overlay/custom_popup_overlay.dart';
+import 'package:playground/red_packet_rain/red_packet_rain_view.dart';
 import 'package:playground/router/router.dart';
 
 void main() {
@@ -88,6 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ElevatedButton(
               onPressed: () => context.go('/eatWhatHo'),
+              onLongPress: () => context.go('/eatWhatHo?spinnerType=1'),
               child: const Text(
                 'EatWhatHo',
               ),
@@ -96,7 +96,31 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 context.go('/datePicker');
               },
-              child: Text('Date range picker'),
+              child: const Text('Date range picker'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                showGeneralDialog(
+                  context: context,
+                  transitionDuration: const Duration(milliseconds: 150),
+                  barrierDismissible: true,
+                  barrierLabel: '',
+                  transitionBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    return const RedPacketRain(
+                      durationTime: 10,
+                    );
+                  },
+                  pageBuilder: (
+                    BuildContext context,
+                    Animation<double> animation,
+                    Animation<double> secondaryAnimation,
+                  ) {
+                    return const SizedBox();
+                  },
+                );
+              },
+              child: const Text('red packet rain'),
             ),
           ],
         ),
